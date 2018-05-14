@@ -1,6 +1,8 @@
-# UnitySteer 3.1  
+# UnitySteer 3.1 Fork for removal of LINQ 
 
-[![Build Status](https://travis-ci.org/GandaG/UnitySteer.svg?branch=feature%2Ftravis_integration)](https://travis-ci.org/GandaG/UnitySteer)
+## Fork
+
+Forked to remove all LINQ dependencies
 
 ## General notes
 

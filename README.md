@@ -21,9 +21,10 @@ Looking for a UnitySteer tutorial?  The [UnitySteer Examples](https://github.com
 
 ## Dependencies
 
-UnitySteer uses [TickedPriorityQueue](https://github.com/Garufortho/TickedPriorityQueue). The latest library is now included on this repository.
+UnitySteer uses [TickedPriorityQueue](https://github.com/Garufortho/TickedPriorityQueue). A modified version is now included in this project that also removes LINQ dependencies from TicketPriorityQueue.
 
-UnitySteer 3.1 requires Unity 5.x for 2D support. The last version to support Unity 4.x was [UnitySteer 3.0](https://github.com/ricardojmendez/UnitySteer/tree/v3.0.0).
+UnitySteer 3.1 Fork for removal of LINQ requires Unity 5.6.4.p3.  It can probably be downgraded, but that's the version I am using currently :)
+
 
 ## Stable and beta versions
 

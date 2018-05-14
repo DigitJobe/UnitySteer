@@ -1,6 +1,5 @@
 //#define ANNOTATE_AVOIDOBSTACLES
 
-using System.Linq;
 using UnityEngine;
 
 namespace UnitySteer2D.Behaviors
@@ -87,7 +86,7 @@ namespace UnitySteer2D.Behaviors
         protected override Vector2 CalculateForce()
         {
             var avoidance = Vector2.zero;
-            if (Vehicle.Radar.Obstacles == null || !Vehicle.Radar.Obstacles.Any())
+            if (Vehicle.Radar.Obstacles == null || Vehicle.Radar.Obstacles.Count > 0)
             {
                 return avoidance;
             }

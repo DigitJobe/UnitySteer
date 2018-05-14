@@ -27,7 +27,6 @@
 
 
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace UnitySteer2D
@@ -54,12 +53,12 @@ namespace UnitySteer2D
 
         public Vector2 FirstPoint
         {
-            get { return Path.FirstOrDefault(); }
+            get { return Path[0]; }
         }
 
         public Vector2 LastPoint
         {
-            get { return Path.LastOrDefault(); }
+            get { return Path[Path.Count - 1]; }
         }
 
         public float TotalPathLength { get; protected set; }
@@ -225,9 +224,9 @@ namespace UnitySteer2D
             // clip or wrap given path distance according to cyclic flag
             var remaining = pathDistance;
             if (pathDistance < 0)
-                return Path.First();
+                return Path[0];
             if (pathDistance >= TotalPathLength)
-                return Path.Last();
+                return Path[Path.Count - 1];
 
             // step through segments, subtracting off segment lengths until
             // locating the segment that contains the original pathDistance.

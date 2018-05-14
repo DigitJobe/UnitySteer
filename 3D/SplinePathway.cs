@@ -25,7 +25,6 @@
 // ----------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace UnitySteer
@@ -83,7 +82,7 @@ namespace UnitySteer
             {
                 _splineNodes[i + 1] = Path[i];
             }
-            _splineNodes[splineNodeLength - 1] = Path.Last() + Normals.Last() * 4;
+            _splineNodes[splineNodeLength - 1] = Path[Path.Count - 1] + Normals[Normals.Count - 1] * 4;
         }
 
         /// <summary>
@@ -175,7 +174,7 @@ namespace UnitySteer
                     lastPosition = nextPosition;
                 }
             }
-            Debug.DrawLine(lastPosition, _splineNodes.Last(), Color.gray);
+            Debug.DrawLine(lastPosition, _splineNodes[_splineNodes.Length - 1], Color.gray);
         }
     }
 }

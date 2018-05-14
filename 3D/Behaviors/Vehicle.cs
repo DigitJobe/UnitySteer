@@ -1,4 +1,4 @@
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnitySteer.Attributes;
 using UnitySteer.Tools;
@@ -259,9 +259,8 @@ namespace UnitySteer.Behaviors
             GameObject = gameObject;
             Rigidbody = GetComponent<Rigidbody>();
             var allSteerings = GetComponents<Steering>();
-            Steerings = allSteerings.Where(x => !x.IsPostProcess).ToArray();
-            SteeringPostprocessors = allSteerings.Where(x => x.IsPostProcess).ToArray();
-            
+            Steerings = IsPostProcessSteering(allSteerings, false);
+            SteeringPostprocessors = IsPostProcessSteering(allSteerings, true);
 
             if (_movementPriority == 0)
             {
@@ -545,6 +544,20 @@ namespace UnitySteer.Behaviors
             return Vector3.Distance(ourPosition, hisPosition);
         }
 
+        private Steering[] IsPostProcessSteering(Steering[] steerings, bool IsPostProcess)
+        {
+            List<Steering> result = new List<Steering>();
+            for (int i = 0; i < steerings.Length; i++)
+            {
+                if (steerings[i].IsPostProcess == IsPostProcess)
+                {
+                    result.Add(steerings[i]);
+                }
+            }
+
+            return result.ToArray();
+
+        }
 
         protected override void OnDrawGizmos()
         {

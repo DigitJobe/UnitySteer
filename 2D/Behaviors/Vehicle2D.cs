@@ -1,6 +1,7 @@
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnitySteer.Attributes;
+using UnitySteer.Behaviors;
 using UnitySteer2D.Tools;
 
 namespace UnitySteer2D.Behaviors
@@ -324,9 +325,9 @@ namespace UnitySteer2D.Behaviors
             base.Awake();
             GameObject = gameObject;
             Rigidbody = GetComponent<Rigidbody2D>();
-            var allSteerings = GetComponents<Steering2D>();
-            Steerings = allSteerings.Where(x => !x.IsPostProcess).ToArray();
-            SteeringPostprocessors = allSteerings.Where(x => x.IsPostProcess).ToArray();
+            Steering2D[] allSteerings = GetComponents<Steering2D>();
+            Steerings = IsPostProcessSteering(allSteerings, false);
+            SteeringPostprocessors = IsPostProcessSteering(allSteerings, true);
 
             if (_movementPriority == 0)
             {
@@ -616,6 +617,21 @@ namespace UnitySteer2D.Behaviors
                 Gizmos.color = Color.grey;
                 Gizmos.DrawWireSphere(Position, _arrivalRadius);
             }
+        }
+
+        private Steering2D[] IsPostProcessSteering(Steering2D[] steerings, bool IsPostProcess)
+        {
+            List<Steering2D> result = new List<Steering2D>();
+            for (int i = 0; i < steerings.Length; i++)
+            {
+                if (steerings[i].IsPostProcess == IsPostProcess)
+                {
+                    result.Add(steerings[i]);
+                }
+            }
+
+            return result.ToArray();
+
         }
 
 #endregion

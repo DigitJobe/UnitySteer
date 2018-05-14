@@ -1,5 +1,4 @@
 #define ANNOTATE_AVOIDOBSTACLES
-using System.Linq;
 using UnityEngine;
 
 namespace UnitySteer.Behaviors
@@ -86,7 +85,7 @@ namespace UnitySteer.Behaviors
         protected override Vector3 CalculateForce()
         {
             var avoidance = Vector3.zero;
-            if (Vehicle.Radar.Obstacles == null || !Vehicle.Radar.Obstacles.Any())
+            if (Vehicle.Radar.Obstacles == null || Vehicle.Radar.Obstacles.Count > 0)
             {
                 return avoidance;
             }
@@ -229,11 +228,15 @@ namespace UnitySteer.Behaviors
 #if ANNOTATE_AVOIDOBSTACLES
         private void OnDrawGizmos()
         {
-            if (Vehicle == null) return;
-            foreach (var o in Vehicle.Radar.Obstacles.Where(x => x != null))
+            if (Vehicle == null || Vehicle.Radar == null || Vehicle.Radar.Obstacles == null) return;
+            int len = Vehicle.Radar.Obstacles.Count;
+            for (int i = 0; i < len; i++)
             {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(o.Position, o.Radius);
+                if (Vehicle.Radar.Obstacles[i] != null)
+                {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawWireSphere(Vehicle.Radar.Obstacles[i].Position, Vehicle.Radar.Obstacles[i].Radius);
+                }
             }
         }
 #endif

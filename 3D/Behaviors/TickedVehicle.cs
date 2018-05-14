@@ -264,7 +264,7 @@ namespace UnitySteer.Behaviors
         /// LookTowardsVelocity.
         /// </summary>
         /// <param name="deltaTime">Time delta to use for turn calculations</param>
-        protected void AdjustOrientation(float deltaTime)
+        protected virtual void AdjustOrientation(float deltaTime)
         {
             /* 
 		 * Avoid adjusting if we aren't applying any velocity. We also
@@ -321,7 +321,7 @@ namespace UnitySteer.Behaviors
         {
             if (_traceAdjustments)
             {
-                Debug.DrawLine(Transform.position, Transform.position + delta, color);
+                UnityEngine.Debug.DrawLine(Transform.position, Transform.position + delta, color);
             }
         }
 

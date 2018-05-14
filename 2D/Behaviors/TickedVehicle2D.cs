@@ -318,7 +318,7 @@ namespace UnitySteer2D.Behaviors
         {
             if (_traceAdjustments)
             {
-                Debug.DrawLine(Transform.position, (Vector2)Transform.position + delta, color);
+                UnityEngine.Debug.DrawLine(Transform.position, (Vector2)Transform.position + delta, color);
             }
         }
 

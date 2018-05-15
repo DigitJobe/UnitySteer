@@ -26,16 +26,6 @@ UnitySteer uses [TickedPriorityQueue](https://github.com/Garufortho/TickedPriori
 UnitySteer 3.1 Fork for removal of LINQ requires Unity 5.6.4.p3.  It can probably be downgraded, but that's the version I am using currently :)
 
 
-## Stable and beta versions
+## UnitySteer Fork for removal of LINQ and iOS
 
-The current stable release is UnitySteer 3.0 RC2.  It contains a significant number of improvements and fixes over 2.7, but it also introduced several breaking changes, so make sure you catch up with [the latest UnitySteer blogposts](http://numergent.com/tags/unitysteer/), as well as reading the [changelog](CHANGELOG.md).
-
-I develop UnitySteer following git-flow, so if you're looking for a specific version, you can look at the project tags:
-
-* [UnitySteer 3.0](https://github.com/ricardojmendez/UnitySteer/tree/v3.0.0)
-* [UnitySteer 2.7](https://github.com/ricardojmendez/UnitySteer/tree/v2.7)
-
-
-## UnitySteer and iOS
-
-If you are using UnitySteer on iOS, bear in mind that you may need to search for and change any LINQ calls, since Unity has a penchant for not AOT'ing them properly.
+LINQ removed, iOS safe now
